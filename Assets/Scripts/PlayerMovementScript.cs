@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    [SerializeField] LevelManagerScript levelManager;
     [SerializeField] Rigidbody2D body;
     [SerializeField] float speed, jumpForce, gravitationalAcceleration;
     float yMovement = 0;
@@ -34,7 +35,7 @@ public class PlayerMovementScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Finish")
-            Debug.Log("Level finished");
+            levelManager.Win();
         if (collision.tag == "Floor")
         {
             onFloor = true;
